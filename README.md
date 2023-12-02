@@ -2,9 +2,9 @@ Disclaimer: The code published here is based on the code from the Harvard projec
 
 ## The reposetory presented here was created as part of a project work for the lecture "Advanced Software Engineering". It currently contains the following files:
 
-nim.py : This is a Q-learning AI written by David J. Malan on the above Harvard project and challenge. This file has been minimally modified and is not a separate work.
+nim.py : This is a Q-learning AI written by David J. Malan on the above Harvard project and challenge. This file has been minimally modified and should not be seen as the author's own work.
 
-Play_the_game : This python file is a game interface and has been developed independently and exclusively by the author of this repository.
+Play_the_game.py : This python file is a game interface and has been developed independently and exclusively by the author of this repository.
 
 highscore.json : This file is the data storage for the highscore of the players and a small statistic about games played by humans against the AI.
 
