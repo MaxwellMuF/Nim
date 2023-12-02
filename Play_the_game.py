@@ -10,7 +10,6 @@ class Player:
         self.ai_trained = None
         self.path_highscore = path_highscore
         self.highscore = self.get_highscore_data()
-        # self.game_statistics = {"Human" : 0, "AI" : 0}
         self.tabs = "\t" 
         self.str_dict = {
             "game_menu_1": 
