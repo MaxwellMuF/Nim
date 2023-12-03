@@ -106,11 +106,6 @@ class Player:
             else:
                 self.highscore[str(self.difficulty)][1][0] += 1
         return
-    
-    def save_highscore(self):
-        with open(self.path_highscore, "w") as json_file:
-                json.dump(self.highscore, json_file)
-        return
 
     def get_highscore_1st_place(self):
         highscore_keys = sorted([int(i) for i in self.highscore.keys()], reverse=True)
