@@ -62,10 +62,14 @@ class Player:
                 highscore_dict = json.load(json_file)
             return highscore_dict
         except:
-            highscore_record = {}
-            with open(self.path_highscore, "w") as json_file:
-                json.dump(highscore_record, json_file)
-            return highscore_record
+            self.highscore = {}
+            self.save_highscore()
+            return self.highscore
+        
+    def save_highscore(self):
+        with open(self.path_highscore, "w") as json_file:
+                json.dump(self.highscore, json_file)
+        return
 
     def show_highscore(self):
         highscore_keys = sorted([int(i) for i in self.highscore.keys()], reverse=True)
