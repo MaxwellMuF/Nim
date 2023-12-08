@@ -1,14 +1,11 @@
 """
 Unittests to test the functions of the Class Player
-
-Unfortunately, a name must first be entered and then the game must be ended by entering "exit" before the tests can run. 
-This problem should be solved later!
 """
 
 import os
 import json
 import unittest
-import Play_the_game as game
+import game_interface as game
 
 class Player_test(unittest.TestCase):
     """
@@ -18,7 +15,9 @@ class Player_test(unittest.TestCase):
         # Create a test_highscore.json for test purpose
         self.test_highscore_path = "test_highscore.json"
         # Create the test class from Play_the_game
-        self.player = game.Player("Test_Human", path_highscore=self.test_highscore_path)
+        self.player = game.Player(path_highscore=self.test_highscore_path, test_mode=True)
+        # Set player name to "Test_Human"
+        self.player.name = "Test_Human"
         # Make a bigger test_highscore
         self.test_highscore = {"15000": [["Heiko"], [1,0]], "500": [["Basti", "Ronny"], [1,3]], 
                           "1000":[ ["Peter", "Gabi"], [1,0]], "5000": [["Hans", "Begüm"], [1,4]],
@@ -35,7 +34,10 @@ class Player_test(unittest.TestCase):
         self.assertIsNone(self.player.difficulty)
         self.assertIsNone(self.player.ai_trained)
         self.assertEqual(self.player.path_highscore, self.test_highscore_path)
-        self.assertEqual(self.player.highscore, {})
+        self.assertEqual(self.player.highscore, {})#
+    
+    # def test_call_(self):
+
 
     def test_save_highscore(self):
         # Save the test_highscore

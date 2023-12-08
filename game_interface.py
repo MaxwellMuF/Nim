@@ -4,14 +4,20 @@ from nim import train, play
 
 
 class Player:
-    def __init__(self, name, path_highscore="highscore.json"):
-        self.name = name
+    def __init__(self, path_highscore="highscore.json", test_mode = True):
+        self.test_mode = test_mode
+        self.name = None
         self.difficulty = None
         self.ai_trained = None
         self.path_highscore = path_highscore
         self.highscore = self.get_highscore_data()
         self.tabs = "\t" 
         self.str_dict = {
+            "call_1":
+            "Welcome to the project: \"Play Nim! Try to beat the AI!\" You will learn the game Nim," +\
+            "get some backgrounds and finily will mess with a reinforcement learning AI. You will train that AI with your" +\
+            "hyperparameters and play agaist it.",
+
             "game_menu_1": 
             "Hello {}. You have three options on how to proceed: information mode (type \'info\'), " +\
             "game mode (type \'game\') or see highscore (type \'score\').\n" +\
@@ -55,6 +61,13 @@ class Player:
 
 
         }
+    
+    def __call__(self):
+        if self.test_mode:
+            pass
+        print(self.str_dict["call_1"])
+        self.name = input("But first, whats your name? ")
+        self.game_menu()
 
     def get_highscore_data(self):
         try:
@@ -229,14 +242,3 @@ class Player:
             print("I'm afraid I didn't understand your request. Lets try it again")
             self.play_game()
         return
-
-
-# Welcome the user
-print()
-print("Welcome to the project: \"Play Nim! Try to beat the AI!\" You will learn the game Nim, \
-get some backgrounds and finily will mess with a reinforcement learning AI. You will train that AI with your \
-hyperparameters and play agaist it.")
-
-new_user = Player(input("But first, whats your name? "))
-new_user.game_menu()
-print("end")
