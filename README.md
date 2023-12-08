@@ -4,9 +4,13 @@ Disclaimer: The code published here is based on the code from the Harvard projec
 
 nim.py : This is a Q-learning AI written by David J. Malan on the above Harvard project and challenge. This file has been minimally modified and should not be seen as the author's own work.
 
-Play_the_game.py : This python file is a game interface and has been developed independently and exclusively by the author of this repository.
+game_interface.py : This python file is a game interface and has been developed independently and exclusively by the author of this repository.
+
+Play_nim.py : This file is to play nim. It create the class Player and activate the game by calling the _call_ function.
 
 highscore.json : This file is the data storage for the highscore of the players and a small statistic about games played by humans against the AI.
+
+test_play_the_game : This file contains a few unit-tests to test the game_interface. It can be executed in different env or with the vs-code Testing ground. 
 
 ## Idea of the project:
 ### This project has two main aspects:
