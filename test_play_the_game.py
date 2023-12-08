@@ -22,7 +22,7 @@ class Player_test(unittest.TestCase):
         # Make a bigger test_highscore
         self.test_highscore = {"15000": [["Heiko"], [1,0]], "500": [["Basti", "Ronny"], [1,3]], 
                           "1000":[ ["Peter", "Gabi"], [1,0]], "5000": [["Hans", "Begüm"], [1,4]],
-                          "25000": [["best_human_player_win"], [1,4]]}
+                          "25000": [["Test_Human"], [0,1]]}
         
 
     def tearDown(self):
@@ -69,6 +69,49 @@ class Player_test(unittest.TestCase):
         self.player.highscore = self.test_highscore
         result = self.player.get_highscore_1st_place()
         self.assertEqual(result, 25000)
+
+    def test_new_highscore_player_wins(self):
+        # reset highscore to empty
+        self.player.highscore = {}
+
+        # Case 1: new highscore with player "Test_Human" and difficulty "1000"
+        self.player.difficulty = 1000
+        self.player.new_highscore(winner=self.player.name)
+        expected_highscore = {"1000": [["Test_Human"], [0, 1]]}
+        self.assertEqual(self.player.highscore, expected_highscore)
+
+        # Case 2: no new highscore but player wins again
+        self.player.new_highscore(winner=self.player.name)
+        expected_highscore = {"1000": [["Test_Human"], [0, 2]]}
+        self.assertEqual(self.player.highscore, expected_highscore)
+
+        # Case 3: no new highscore but AI wins
+        self.player.new_highscore(winner="AI")
+        expected_highscore = {"1000": [["Test_Human"], [1, 2]]}
+        self.assertEqual(self.player.highscore, expected_highscore)
+
+    def test_new_highscore_ai_wins(self):
+        # reset highscore to empty
+        self.player.highscore = {}
+
+        # Case 1: new game with player "Test_Human" and difficulty "1000" but AI wins
+        self.player.difficulty = 1000
+        self.player.new_highscore(winner="AI")
+        expected_highscore = {"1000": [[], [1, 0]]}
+        self.assertEqual(self.player.highscore, expected_highscore)
+
+        # Case 1: no new highscore but AI wins again
+        self.player.new_highscore(winner="AI")
+        expected_highscore = {"1000": [[], [2, 0]]}
+        self.assertEqual(self.player.highscore, expected_highscore)
+
+        # Case 3: no new highscore but player wins
+        self.player.new_highscore(winner=self.player.name)
+        expected_highscore = {"1000": [["Test_Human"], [2, 1]]}
+        self.assertEqual(self.player.highscore, expected_highscore)
+
+
+
 
 
 if __name__ == '__main__':
