@@ -4,7 +4,7 @@ from nim import train, play
 
 
 class Player:
-    def __init__(self, path_highscore="highscore.json", test_mode = True):
+    def __init__(self, path_highscore="highscore.json", test_mode = False):
         self.test_mode = test_mode
         self.name = None
         self.difficulty = None
