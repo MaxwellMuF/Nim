@@ -69,6 +69,11 @@ class Player:
         self.name = input("But first, whats your name? ")
         self.game_menu()
 
+    def save_highscore(self):
+        with open(self.path_highscore, "w") as json_file:
+                json.dump(self.highscore, json_file)
+        return
+    
     def get_highscore_data(self):
         try:
             with open(self.path_highscore, "r") as json_file:
@@ -78,11 +83,6 @@ class Player:
             self.highscore = {}
             self.save_highscore()
             return self.highscore
-        
-    def save_highscore(self):
-        with open(self.path_highscore, "w") as json_file:
-                json.dump(self.highscore, json_file)
-        return
 
     def show_highscore(self):
         highscore_keys = sorted([int(i) for i in self.highscore.keys()], reverse=True)

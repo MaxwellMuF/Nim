@@ -1,5 +1,5 @@
 """
-Unittests to test the functions of the Class Player
+Unittests to test the functions of the Class Player (from game_interface.py)
 """
 
 import os
