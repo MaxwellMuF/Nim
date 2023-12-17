@@ -223,7 +223,7 @@ class Player:
         print()
         input_play_game = input("Type \'play\' to play, \'score\' to show highscore or \'menu\' to go to the menu! ")
         if input_play_game == "play":
-            winner = play(self.ai_trained, self.name, 1)
+            winner = play(self.ai_trained, self.name)
             self.new_highscore(winner)
             print()
             time.sleep(2)
